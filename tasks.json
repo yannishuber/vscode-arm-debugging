@@ -1,0 +1,57 @@
+{
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "build",
+      "command": "make all"
+    },
+    {
+      "isBackground": true,
+      "dependsOn": "build",
+      "type": "shell",
+      "label": "start-jlinkserver",
+      "command": "JLinkGDBServerCLExe",
+      "args": [
+        "-if",
+        "jtag",
+        "-device",
+        "am3358",
+        "-endian",
+        "little",
+        "-speed",
+        "1000",
+        "-port",
+        "2331",
+        "-swoport",
+        "2332",
+        "-telnetport",
+        "2333",
+        "-vd",
+        "-ir",
+        "-localhostonly",
+        "1",
+        "-singlerun",
+        "-strict",
+        "-timeout",
+        "0",
+        "-nogui",
+      ],
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".*",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": ".*"
+        }
+      }
+    }
+  ],
+  "version": "2.0.0"
+}

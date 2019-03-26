@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+        "configurations": [
+          
+          {
+            "cwd": "${workspaceRoot}",
+            "name": "Debug JLink",
+            "request": "attach",
+            "type": "gdb",
+            "executable": "app_a",
+            "target": "localhost:2331",
+            "remote": true,
+            "gdbpath": "arm-none-eabi-gdb",
+            "valuesFormatting": "prettyPrinters",
+            "autorun": [
+              "monitor reset",
+              "monitor go",
+              "monitor sleep 1000",
+              "monitor halt",
+              "load"
+            ],
+            "preLaunchTask": "start-jlinkserver"
+          }
+      ]
+}
